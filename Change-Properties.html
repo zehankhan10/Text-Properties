@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <title>Text Properties</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0  10px 10px rgba(0, 0, 0, 0.1);
+        }
+        #result,#heading {
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        function alignLeft() {
+            document.getElementById("result").style.textAlign = "left";
+        }
+        function alignCenter() {
+            document.getElementById("result").style.textAlign = "center";
+        }
+        function alignRight() {
+            document.getElementById("result").style.textAlign = "right";
+        }
+        function colorChange() {
+            document.getElementById("result").style.color = document.getElementById("fontColor").value;
+        }
+        function rangeChange() {
+            var fontSizeValue = document.getElementById("fontRange").value;
+            document.getElementById("result").style.fontSize = fontSizeValue + "px";
+        }
+        function optChange() {
+            var styleValue = document.getElementById("styleChange").value;
+            if (styleValue === "italic") {
+                document.getElementById("result").style.fontStyle = "italic";
+                document.getElementById("result").style.fontWeight = "normal";
+            } else if (styleValue === "bold") {
+                document.getElementById("result").style.fontStyle = "normal";
+                document.getElementById("result").style.fontWeight = "bold";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card bg-dark text-light mb-3">
+                    <h3 id="heading">Text Alignment Options</h3>
+                </div>
+            </div>
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <label class="h3" for="fontRange">Font Size</label>
+                    <input type="range" min="10" max="70" oninput="rangeChange()" id="fontRange" class="form-range">
+                </div>
+                <div class="card mt-2">
+                    <label class="h3" for="fontColor">Font Color</label>
+                    <input type="color" oninput="colorChange()" id="fontColor" class="form-control">
+                </div>
+                <div class="card mt-2">
+                    <label class="h3" for="styleChange">Font Style</label>
+                    <select onchange="optChange()" id="styleChange" class="form-select">
+                        <option value="normal" selected>Select Options</option>
+                        <option value="italic">Italic</option>
+                        <option value="bold">Bold</option>
+                    </select>
+                </div>
+                <div class="card mt-2">
+                    <label class="h3" for="textAlign">Text Alignment</label>
+                    <div class="btn-group">
+                        <button onclick="alignLeft()" class="btn btn-primary"><span class="bi bi-align-start"></span>&nbsp;Left</button>
+                        <button onclick="alignCenter()" class="btn btn-secondary"><span class="bi bi-align-center"></span>&nbsp;Center</button>
+                        <button onclick="alignRight()" class="btn btn-danger">Right&nbsp;<span class="bi bi-align-end"></span></button>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <p id="result">Welcome To Javascript</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
